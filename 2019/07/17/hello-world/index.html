@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/17/hello-world/%E5%88%A0%E9%99%A4next%E7%9B%AE%E5%BD%95.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/17/hello-world/%E4%BF%AE%E6%94%B9folder%E8%8A%82%E7%82%B9.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/17/hello-world/%E5%AE%89%E8%A3%85%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6.png">
-<meta property="og:updated_time" content="2019-07-19T10:08:12.547Z">
+<meta property="og:updated_time" content="2019-07-19T10:13:19.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo页面美化">
 <meta name="twitter:description" content="前言本人刚开始学习制作这个博客的时候，做出的第一个博客页面就是最普通最原始的，没有一点特点，也不是自己喜欢的那种。于是上网大量寻找博客主题美化的教程和步骤，发现没有比较容易理解和步骤全面的教程。于是鄙人便制作了此篇博客。望能帮助各大博友解决此问题。 正文1.设置【当前浏览进度】1.打开 themes/next/_config.yml文件 ,搜索关键字 scrollpercent ,把 false">
@@ -343,20 +343,21 @@
 <pre><code>2.找到fonts.google.com（一般在最下面）</code></pre><p><img src="/2019/07/17/hello-world/%E6%89%BE%E5%88%B0%E5%8E%9F%E5%A7%8B%E6%96%87%E4%BB%B6.png" alt="找到原始文件"></p>
 <pre><code>3.改成fonts.lug.ustc.edu.cn</code></pre><p><img src="/2019/07/17/hello-world/%E6%94%B9%E6%88%90%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F.png" alt="改成国内镜像"></p>
 <h2 id="5-设置【浏览次数】"><a href="#5-设置【浏览次数】" class="headerlink" title="5.设置【浏览次数】"></a>5.设置【浏览次数】</h2><p>打开 hexo 目录下的 \themes\next\ _config.yml 文件更改以下配置</p>
-<pre><code># count values only if the other configs are false
-  enable: true
-  # custom uv span for the whole site
-  site_uv: true
-  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; 访问人数
-  site_uv_footer:
-  # custom pv span for the whole site
-  site_pv: true
-  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; 总访问量
-  site_pv_footer: 次
-  # custom pv span for one page only
-  page_pv: true
-  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; 浏览
-  page_pv_footer: 次</code></pre><p><img src="/2019/07/17/hello-world/%E8%AE%BE%E7%BD%AE%E6%B5%8F%E8%A7%88%E6%AC%A1%E6%95%B0.png" alt="设置浏览次数"></p>
+<pre><code>busuanzi_count:
+    # count values only if the other configs are false
+    enable: true
+    # custom uv span for the whole site
+    site_uv: true
+    site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; 访问人数
+    site_uv_footer:
+    # custom pv span for the whole site
+    site_pv: true
+    site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt; 总访问量
+    site_pv_footer: 次
+    # custom pv span for one page only
+    page_pv: true
+    page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; 浏览
+    page_pv_footer: 次</code></pre><p><img src="/2019/07/17/hello-world/%E8%AE%BE%E7%BD%AE%E6%B5%8F%E8%A7%88%E6%AC%A1%E6%95%B0.png" alt="设置浏览次数"></p>
 <h3 id="【注意】："><a href="#【注意】：" class="headerlink" title="【注意】："></a>【注意】：</h3><p>加上“访问人数”等文字前与标签要有一个空格不然会报错</p>
 <h2 id="6-侧边栏社交链接"><a href="#6-侧边栏社交链接" class="headerlink" title="6.侧边栏社交链接"></a>6.侧边栏社交链接</h2><h3 id="【问题】：-1"><a href="#【问题】：-1" class="headerlink" title="【问题】："></a>【问题】：</h3><p>   侧边栏图标上哪找</p>
 <h3 id="解决方法：-1"><a href="#解决方法：-1" class="headerlink" title="解决方法："></a>解决方法：</h3><p>   本网站提供图标大全 <a href="https://fontawesome.com/icons?d=gallery" target="_blank" rel="noopener">[点我前往]</a></p>
