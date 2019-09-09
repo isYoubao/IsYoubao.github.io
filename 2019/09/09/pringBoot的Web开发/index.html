@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--STA">
+<meta name="description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文一、引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--S">
 <meta name="keywords" content="游宝的个人博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot的Web开发">
 <meta property="og:url" content="http://yoursite.com/2019/09/09/pringBoot的Web开发/index.html">
 <meta property="og:site_name" content="游宝的个人博客">
-<meta property="og:description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--STA">
+<meta property="og:description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文一、引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--S">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-09T01:09:36.447Z">
+<meta property="og:updated_time" content="2019-09-09T01:29:27.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot的Web开发">
-<meta name="twitter:description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--STA">
+<meta name="twitter:description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文一、引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--S">
 
 
 
@@ -312,7 +312,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="引入MyBatis依赖"><a href="#引入MyBatis依赖" class="headerlink" title="引入MyBatis依赖"></a>引入MyBatis依赖</h3><p>在pom.xml文件中添加我们MyBatis的依赖</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一、引入MyBatis依赖"><a href="#一、引入MyBatis依赖" class="headerlink" title="一、引入MyBatis依赖"></a>一、引入MyBatis依赖</h3><p>在pom.xml文件中添加我们MyBatis的依赖</p>
 <pre><code>&lt;!--START === SpringBoot 整合 Mybatis+Mysql 所需要的依赖 === START--&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
@@ -324,12 +324,12 @@
   &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
   &lt;version&gt;5.1.10&lt;/version&gt;
 &lt;/dependency&gt;
-&lt;!--END === SpringBoot 整合 Mybatis+Mysql 所需要的依赖 === END--&gt;</code></pre><h3 id="配置数据源"><a href="#配置数据源" class="headerlink" title="配置数据源"></a>配置数据源</h3><p>在我们项目的resource文件夹下的application.properties文件中添加配置</p>
+&lt;!--END === SpringBoot 整合 Mybatis+Mysql 所需要的依赖 === END--&gt;</code></pre><h3 id="二、配置数据源"><a href="#二、配置数据源" class="headerlink" title="二、配置数据源"></a>二、配置数据源</h3><p>在我们项目的resource文件夹下的application.properties文件中添加配置</p>
 <pre><code>#配置数据库
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/test
 spring.datasource.username=root
-spring.datasource.password=root</code></pre><h3 id="编写mapper接口，映射文件，Service层和Controller层"><a href="#编写mapper接口，映射文件，Service层和Controller层" class="headerlink" title="编写mapper接口，映射文件，Service层和Controller层"></a>编写mapper接口，映射文件，Service层和Controller层</h3><h4 id="编写entity实体类并设置get，set方法"><a href="#编写entity实体类并设置get，set方法" class="headerlink" title="编写entity实体类并设置get，set方法"></a>编写entity实体类并设置get，set方法</h4><pre><code>##省略</code></pre><h4 id="创建dao包，在dao包下创建UserMapper接口"><a href="#创建dao包，在dao包下创建UserMapper接口" class="headerlink" title="创建dao包，在dao包下创建UserMapper接口"></a>创建dao包，在dao包下创建UserMapper接口</h4><pre><code>@Mapper
+spring.datasource.password=root</code></pre><h3 id="三、编写mapper接口，映射文件，Service层和Controller层"><a href="#三、编写mapper接口，映射文件，Service层和Controller层" class="headerlink" title="三、编写mapper接口，映射文件，Service层和Controller层"></a>三、编写mapper接口，映射文件，Service层和Controller层</h3><h4 id="1-编写entity实体类并设置get，set方法"><a href="#1-编写entity实体类并设置get，set方法" class="headerlink" title="1.编写entity实体类并设置get，set方法"></a>1.编写entity实体类并设置get，set方法</h4><pre><code>##省略</code></pre><h4 id="2-创建dao包，在dao包下创建UserMapper接口"><a href="#2-创建dao包，在dao包下创建UserMapper接口" class="headerlink" title="2.创建dao包，在dao包下创建UserMapper接口"></a>2.创建dao包，在dao包下创建UserMapper接口</h4><pre><code>@Mapper
 public interface UserMapper {
     //用户登录
     public User getUserByName(@Param(&quot;name&quot;) String name);
@@ -534,7 +534,7 @@ public interface UserMapper {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入MyBatis依赖"><span class="nav-number">2.1.</span> <span class="nav-text">引入MyBatis依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置数据源"><span class="nav-number">2.2.</span> <span class="nav-text">配置数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写mapper接口，映射文件，Service层和Controller层"><span class="nav-number">2.3.</span> <span class="nav-text">编写mapper接口，映射文件，Service层和Controller层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写entity实体类并设置get，set方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">编写entity实体类并设置get，set方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建dao包，在dao包下创建UserMapper接口"><span class="nav-number">2.3.2.</span> <span class="nav-text">创建dao包，在dao包下创建UserMapper接口</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、引入MyBatis依赖"><span class="nav-number">2.1.</span> <span class="nav-text">一、引入MyBatis依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、配置数据源"><span class="nav-number">2.2.</span> <span class="nav-text">二、配置数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、编写mapper接口，映射文件，Service层和Controller层"><span class="nav-number">2.3.</span> <span class="nav-text">三、编写mapper接口，映射文件，Service层和Controller层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-编写entity实体类并设置get，set方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.编写entity实体类并设置get，set方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-创建dao包，在dao包下创建UserMapper接口"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.创建dao包，在dao包下创建UserMapper接口</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
