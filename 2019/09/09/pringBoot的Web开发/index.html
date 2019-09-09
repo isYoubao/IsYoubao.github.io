@@ -88,7 +88,7 @@
 <meta property="og:description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文一、引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--S">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/09/09/pringBoot的Web开发/%E7%99%BB%E5%BD%95.png">
-<meta property="og:updated_time" content="2019-09-09T02:51:14.940Z">
+<meta property="og:updated_time" content="2019-09-09T02:53:19.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot的Web开发">
 <meta name="twitter:description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文一、引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--S">
@@ -413,7 +413,8 @@ public class UserController {
     ...
 &lt;link href=&quot;asserts/css/signin.css&quot; th:href=&quot;@{/asserts/css/signin.css}&quot; rel=&quot;stylesheet&quot;&gt;</code></pre><h4 id="11-获得登录用户的用户名"><a href="#11-获得登录用户的用户名" class="headerlink" title="11.获得登录用户的用户名"></a>11.获得登录用户的用户名</h4><pre><code>#使用el表达式获得。因跳转页面是重定向，所以需要使用到session传值，否则值会丢失。即获取值时也需要使用session
 &lt;a class=&quot;navbar-brand col-sm-3 col-md-2 mr-0&quot; href=&quot;#&quot;&gt;
-    欢迎您:[[${session.user.name}]]&lt;/a&gt;</code></pre><h4 id="12-启动项目"><a href="#12-启动项目" class="headerlink" title="12.启动项目"></a>12.启动项目</h4><p>打开浏览器输入 <a href="http://localhost:8080/index" target="_blank" rel="noopener">http://localhost:8080/index</a> 实现对login.html登录的用户名和密码验证<br><img src="/2019/09/09/pringBoot的Web开发/%E7%99%BB%E5%BD%95.png" alt="登录"></p>
+    欢迎您:[[${session.user.name}]]
+&lt;/a&gt;</code></pre><h4 id="12-启动项目"><a href="#12-启动项目" class="headerlink" title="12.启动项目"></a>12.启动项目</h4><p>打开浏览器输入 <a href="http://localhost:8080/index" target="_blank" rel="noopener">http://localhost:8080/index</a> 实现对login.html登录的用户名和密码验证<br><img src="/2019/09/09/pringBoot的Web开发/%E7%99%BB%E5%BD%95.png" alt="登录"></p>
 <h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>以上就是本人的SpringBoot开发Web项目的个人心得。希望对有需要的人能够提供一点帮助。</p>
 
       
