@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="游宝的个人博客">
 <meta property="og:description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文一、引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--S">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-09T01:29:27.982Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/09/pringBoot的Web开发/%E7%99%BB%E5%BD%95.png">
+<meta property="og:updated_time" content="2019-09-09T02:51:14.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot的Web开发">
 <meta name="twitter:description" content="前言前面说到了SpringBoot是我们Spring框架的“加强版”，也就是我们封装之后的强力版本。既然学习了SpringBoot那我们肯定要拿出来实际操作开发一个Web项目，开发项目也不能是用死的数据，得从数据库中动态获取数据。那么问题就来了，我们的SpringBoot怎么连接数据库呢？请看正文。 正文一、引入MyBatis依赖在pom.xml文件中添加我们MyBatis的依赖 &amp;lt;!--S">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/09/pringBoot的Web开发/%E7%99%BB%E5%BD%95.png">
 
 
 
@@ -339,7 +341,81 @@ public interface UserMapper {
 
     //显示用户
     public List&lt;User&gt; userList();
-}</code></pre>
+}</code></pre><h4 id="3-在resource目录中创建mapper包，在mapper包下创建UserMapper-xml映射文件"><a href="#3-在resource目录中创建mapper包，在mapper包下创建UserMapper-xml映射文件" class="headerlink" title="3.在resource目录中创建mapper包，在mapper包下创建UserMapper.xml映射文件"></a>3.在resource目录中创建mapper包，在mapper包下创建UserMapper.xml映射文件</h4><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC &quot;-//mybatis.org//DTD mapper 3.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.kuge.demo.dao.UserMapper&quot;&gt;
+    &lt;select id=&quot;getUserByName&quot; resultType=&quot;com.kuge.demo.entity.User&quot;&gt;
+        select * from `user` where `name`=#{name}
+    &lt;/select&gt;
+&lt;/mapper&gt;</code></pre><h4 id="4-在application-properties配置文件中为实体类指定一个别名"><a href="#4-在application-properties配置文件中为实体类指定一个别名" class="headerlink" title="4.在application.properties配置文件中为实体类指定一个别名"></a>4.在application.properties配置文件中为实体类指定一个别名</h4><pre><code>###为实体类指定一个别名，方便我们的框架去识别并找到
+   mybatis.type-aliases-package=com.kuge.demo.entity</code></pre><h4 id="5-同上，设置mapper映射文件的位置"><a href="#5-同上，设置mapper映射文件的位置" class="headerlink" title="5.同上，设置mapper映射文件的位置"></a>5.同上，设置mapper映射文件的位置</h4><pre><code># 查找mapper文件的路径
+mybatis.mapper-locations=classpath:mapper/*.xml</code></pre><h4 id="6-创建service包并创建UserService接口"><a href="#6-创建service包并创建UserService接口" class="headerlink" title="6.创建service包并创建UserService接口"></a>6.创建service包并创建UserService接口</h4><pre><code>public interface UserService {
+//获取用户姓名
+public User getUserByName(String name);
+
+//添加用户
+public int addUser(User user);
+
+//显示用户
+public List&lt;User&gt; userList();
+}</code></pre><h4 id="7-在service包中，创建UserServiceImpl实现UserService接口"><a href="#7-在service包中，创建UserServiceImpl实现UserService接口" class="headerlink" title="7.在service包中，创建UserServiceImpl实现UserService接口"></a>7.在service包中，创建UserServiceImpl实现UserService接口</h4><pre><code>@Transactional
+@Service
+public class UserServiceImpl implements UserService {
+    @Resource
+    private UserMapper userMapper;
+    @Override
+    public User getUserByName(String name) { return userMapper.getUserByName(name);}
+    @Override
+    public int addUser(User user) { return userMapper.addUser(user); }
+    @Override
+    public List&lt;User&gt; userList() { return userMapper.userList(); }
+}</code></pre><h4 id="8-在Controller中创建UserController。代码如下"><a href="#8-在Controller中创建UserController。代码如下" class="headerlink" title="8.在Controller中创建UserController。代码如下"></a>8.在Controller中创建UserController。代码如下</h4><pre><code>@Controller
+@RequestMapping(&quot;/user&quot;)
+public class UserController {
+    @Resource
+    private UserService userService;
+    @Resource
+    private DeptService deptService;
+
+    //登录
+    @RequestMapping(&quot;/login&quot;)
+    public String login(@Param(&quot;name&quot;)String name,
+                        @Param(&quot;pwd&quot;)String pwd,
+                        HttpServletRequest request){
+        try {
+            User user=userService.getUserByName(name);
+            List&lt;Dept&gt; deptList=deptService.deptList();
+            if (user==null){
+                request.setAttribute(&quot;msg&quot;,&quot;用户名不存在！&quot;);
+                return &quot;index.html&quot;;
+            }else if (!user.getPassword().equals(pwd)){
+                request.setAttribute(&quot;msg&quot;,&quot;密码不正确，请确认后再输入！&quot;);
+                return &quot;index.html&quot;;
+            }else{
+                request.getSession().setAttribute(&quot;user&quot;,user);
+                request.getSession().setAttribute(&quot;deptList&quot;,deptList);
+                return &quot;redirect:/user/list&quot;;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            request.setAttribute(&quot;msg&quot;,&quot;登录失败！&quot;);
+            return &quot;index.html&quot;;
+        }
+    }
+ }</code></pre><h4 id="9-错误提示"><a href="#9-错误提示" class="headerlink" title="9.错误提示"></a>9.错误提示</h4><pre><code>#可为登录页面添加适当的错误提示{msg}
+&lt;h1 class=&quot;h3 mb-3 font-weight-normal&quot; th:text=&quot;#{login.tip}&quot;&gt;Please sign in&lt;/h1&gt;
+        &lt;p style=&quot;color: red;&quot; th:text=&quot;${msg}&quot; th:if=&quot;${not #strings.isEmpty(msg)}&quot;&gt;&lt;/p&gt;
+        &lt;label class=&quot;sr-only&quot;&gt;Username&lt;/label&gt;
+        &lt;input type=&quot;text&quot; name=&quot;name&quot; class=&quot;form-control&quot; placeholder=&quot;Username&quot; th:placeholder=&quot;#{login.username}&quot; required=&quot;&quot; autofocus=&quot;&quot;&gt;</code></pre><h4 id="10-静态资源的引用"><a href="#10-静态资源的引用" class="headerlink" title="10.静态资源的引用"></a>10.静态资源的引用</h4><pre><code>#在头部需要引用thymeleaf模板
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+    ...
+&lt;link href=&quot;asserts/css/signin.css&quot; th:href=&quot;@{/asserts/css/signin.css}&quot; rel=&quot;stylesheet&quot;&gt;</code></pre><h4 id="11-获得登录用户的用户名"><a href="#11-获得登录用户的用户名" class="headerlink" title="11.获得登录用户的用户名"></a>11.获得登录用户的用户名</h4><pre><code>#使用el表达式获得。因跳转页面是重定向，所以需要使用到session传值，否则值会丢失。即获取值时也需要使用session
+&lt;a class=&quot;navbar-brand col-sm-3 col-md-2 mr-0&quot; href=&quot;#&quot;&gt;
+    欢迎您:[[${session.user.name}]]&lt;/a&gt;</code></pre><h4 id="12-启动项目"><a href="#12-启动项目" class="headerlink" title="12.启动项目"></a>12.启动项目</h4><p>打开浏览器输入 <a href="http://localhost:8080/index" target="_blank" rel="noopener">http://localhost:8080/index</a> 实现对login.html登录的用户名和密码验证<br><img src="/2019/09/09/pringBoot的Web开发/%E7%99%BB%E5%BD%95.png" alt="登录"></p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>以上就是本人的SpringBoot开发Web项目的个人心得。希望对有需要的人能够提供一点帮助。</p>
+
       
     </div>
     
@@ -534,7 +610,7 @@ public interface UserMapper {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、引入MyBatis依赖"><span class="nav-number">2.1.</span> <span class="nav-text">一、引入MyBatis依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、配置数据源"><span class="nav-number">2.2.</span> <span class="nav-text">二、配置数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、编写mapper接口，映射文件，Service层和Controller层"><span class="nav-number">2.3.</span> <span class="nav-text">三、编写mapper接口，映射文件，Service层和Controller层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-编写entity实体类并设置get，set方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.编写entity实体类并设置get，set方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-创建dao包，在dao包下创建UserMapper接口"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.创建dao包，在dao包下创建UserMapper接口</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、引入MyBatis依赖"><span class="nav-number">2.1.</span> <span class="nav-text">一、引入MyBatis依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、配置数据源"><span class="nav-number">2.2.</span> <span class="nav-text">二、配置数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、编写mapper接口，映射文件，Service层和Controller层"><span class="nav-number">2.3.</span> <span class="nav-text">三、编写mapper接口，映射文件，Service层和Controller层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-编写entity实体类并设置get，set方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.编写entity实体类并设置get，set方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-创建dao包，在dao包下创建UserMapper接口"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.创建dao包，在dao包下创建UserMapper接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-在resource目录中创建mapper包，在mapper包下创建UserMapper-xml映射文件"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.在resource目录中创建mapper包，在mapper包下创建UserMapper.xml映射文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-在application-properties配置文件中为实体类指定一个别名"><span class="nav-number">2.3.4.</span> <span class="nav-text">4.在application.properties配置文件中为实体类指定一个别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-同上，设置mapper映射文件的位置"><span class="nav-number">2.3.5.</span> <span class="nav-text">5.同上，设置mapper映射文件的位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-创建service包并创建UserService接口"><span class="nav-number">2.3.6.</span> <span class="nav-text">6.创建service包并创建UserService接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-在service包中，创建UserServiceImpl实现UserService接口"><span class="nav-number">2.3.7.</span> <span class="nav-text">7.在service包中，创建UserServiceImpl实现UserService接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-在Controller中创建UserController。代码如下"><span class="nav-number">2.3.8.</span> <span class="nav-text">8.在Controller中创建UserController。代码如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-错误提示"><span class="nav-number">2.3.9.</span> <span class="nav-text">9.错误提示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-静态资源的引用"><span class="nav-number">2.3.10.</span> <span class="nav-text">10.静态资源的引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-获得登录用户的用户名"><span class="nav-number">2.3.11.</span> <span class="nav-text">11.获得登录用户的用户名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-启动项目"><span class="nav-number">2.3.12.</span> <span class="nav-text">12.启动项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结尾"><span class="nav-number">3.</span> <span class="nav-text">结尾</span></a></li></ol></div>
             
 
           </div>
