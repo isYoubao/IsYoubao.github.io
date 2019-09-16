@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/10/Java爬虫/%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/10/Java爬虫/%E6%97%A5%E5%BF%97.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/10/Java爬虫/%E7%BB%93%E6%9E%9C.png">
-<meta property="og:updated_time" content="2019-09-16T13:42:23.478Z">
+<meta property="og:updated_time" content="2019-09-16T13:55:52.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java爬虫入门（一）">
 <meta name="twitter:description" content="什么是网络爬虫网络爬虫是一个自动爬取网页数据的程序或脚本，在给定的URL地址中获取我们需要的数据，并得到新的URL地址设置为我们爬取的目标，直到满足我们设置的条件才停止。 工作原理 1.根据指定得URL地址发送请求  2.获得响应  3.解析响应  4.过滤出我们想要的数据并保存   入门程序环境配置1.JDK1.8 2.Intellij IDEA 3.IDEA自带的Maven 环境准备添加pom">
@@ -354,10 +354,11 @@
     &lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 #### 添加日志文件log4j.properties
-    log4j.rootLogger=DEBUG,Al
-    1og4j.logger.cn.itcast = DEBUG
 
-<pre><code>1og4j.appender.A1=org.apache.log4j.ConsoleAppender
+<pre><code>log4j.rootLogger=DEBUG,Al
+1og4j.logger.cn.itcast = DEBUG
+
+1og4j.appender.A1=org.apache.log4j.ConsoleAppender
 log4j.appender.A1.layout=org.apache .1og4j.PatternLayout
 log4j.appender.A1.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss,SSS}[%t] [%c ]-[%p] %m%n</code></pre><h4 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h4><p>爬取百度首页的html标签</p>
 <pre><code>package com.kuge.test;
