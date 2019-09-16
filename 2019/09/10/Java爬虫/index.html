@@ -79,30 +79,24 @@
 
 
 
-<meta name="description" content="SpringBoot一、什么是微服务微服务就是将一个应用程序的各个功能模块全部分开。每个模块单独使用一个数据库。避免出现某个功能模块压力较大无法针对单个模块进行优化。  注意：并不是使用了springboot就是微服务，springboot只是为了更好的帮助我们创建项目。真正的微服务需要架构上的支持。 二、SpringBootSpringBoot是对于Spring框架进行进一步封装的快捷框架。 S">
+<meta name="description" content="什么是网络爬虫网络爬虫是一个自动爬取网页数据的程序或脚本，在给定的URL地址中获取我们需要的数据，并得到新的URL地址设置为我们爬取的目标，直到满足我们设置的条件才停止。 工作原理 1.根据指定得URL地址发送请求  2.获得响应  3.解析响应  4.过滤出我们想要的数据并保存   入门程序环境配置1.JDK1.8 2.Intellij IDEA 3.IDEA自带的Maven 环境准备添加pom">
 <meta name="keywords" content="游宝的个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初识SpringBoot">
-<meta property="og:url" content="http://yoursite.com/2019/09/04/初始SpringBoot/index.html">
+<meta property="og:title" content="Java爬虫入门（一）">
+<meta property="og:url" content="http://yoursite.com/2019/09/10/Java爬虫/index.html">
 <meta property="og:site_name" content="游宝的个人博客">
-<meta property="og:description" content="SpringBoot一、什么是微服务微服务就是将一个应用程序的各个功能模块全部分开。每个模块单独使用一个数据库。避免出现某个功能模块压力较大无法针对单个模块进行优化。  注意：并不是使用了springboot就是微服务，springboot只是为了更好的帮助我们创建项目。真正的微服务需要架构上的支持。 二、SpringBootSpringBoot是对于Spring框架进行进一步封装的快捷框架。 S">
+<meta property="og:description" content="什么是网络爬虫网络爬虫是一个自动爬取网页数据的程序或脚本，在给定的URL地址中获取我们需要的数据，并得到新的URL地址设置为我们爬取的目标，直到满足我们设置的条件才停止。 工作原理 1.根据指定得URL地址发送请求  2.获得响应  3.解析响应  4.过滤出我们想要的数据并保存   入门程序环境配置1.JDK1.8 2.Intellij IDEA 3.IDEA自带的Maven 环境准备添加pom">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E5%BE%AE%E6%9C%8D%E5%8A%A1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/SpringBootApplication.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/Enable%E6%B3%A8%E8%A7%A3.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/Bean%E8%87%AA%E5%AE%9A%E4%B9%89.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E9%A1%B9%E7%9B%AE%E5%91%BD%E5%90%8D.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E9%80%89%E6%8B%A9%E4%BE%9D%E8%B5%96.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E6%A0%B9%E7%9B%AE%E5%BD%95.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E6%97%A0%E5%90%AF%E5%8A%A8.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E4%B8%8B%E8%BD%BDJar.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E5%AF%BC%E5%85%A5%E6%88%90%E5%8A%9F.png">
-<meta property="og:updated_time" content="2019-09-10T12:22:37.563Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/Java爬虫/%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/Java爬虫/Java%E7%88%AC%E8%99%AB/httpclients.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/Java爬虫/%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/Java爬虫/%E6%97%A5%E5%BF%97.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/10/Java爬虫/%E7%BB%93%E6%9E%9C.png">
+<meta property="og:updated_time" content="2019-09-16T13:42:23.478Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识SpringBoot">
-<meta name="twitter:description" content="SpringBoot一、什么是微服务微服务就是将一个应用程序的各个功能模块全部分开。每个模块单独使用一个数据库。避免出现某个功能模块压力较大无法针对单个模块进行优化。  注意：并不是使用了springboot就是微服务，springboot只是为了更好的帮助我们创建项目。真正的微服务需要架构上的支持。 二、SpringBootSpringBoot是对于Spring框架进行进一步封装的快捷框架。 S">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/04/初始SpringBoot/%E5%BE%AE%E6%9C%8D%E5%8A%A1.png">
+<meta name="twitter:title" content="Java爬虫入门（一）">
+<meta name="twitter:description" content="什么是网络爬虫网络爬虫是一个自动爬取网页数据的程序或脚本，在给定的URL地址中获取我们需要的数据，并得到新的URL地址设置为我们爬取的目标，直到满足我们设置的条件才停止。 工作原理 1.根据指定得URL地址发送请求  2.获得响应  3.解析响应  4.过滤出我们想要的数据并保存   入门程序环境配置1.JDK1.8 2.Intellij IDEA 3.IDEA自带的Maven 环境准备添加pom">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/10/Java爬虫/%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png">
 
 
 
@@ -132,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/04/初始SpringBoot/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/10/Java爬虫/">
 
 
 
 
 
-  <title>初识SpringBoot | 游宝的个人博客</title>
+  <title>Java爬虫入门（一） | 游宝的个人博客</title>
   
 
 
@@ -256,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/初始SpringBoot/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/Java爬虫/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="游宝">
@@ -273,7 +267,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">初识SpringBoot</h1>
+          <h1 class="post-title" itemprop="name headline">Java爬虫入门（一）</h1>
         
 
         <div class="post-meta">
@@ -285,8 +279,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-04T17:18:31+08:00">
-                2019-09-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T20:28:05+08:00">
+                2019-09-10
               </time>
             
 
@@ -323,25 +317,83 @@
       
 
       
-        <h1 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h1><h2 id="一、什么是微服务"><a href="#一、什么是微服务" class="headerlink" title="一、什么是微服务"></a>一、什么是微服务</h2><p>微服务就是将一个应用程序的各个功能模块全部分开。每个模块单独使用一个数据库。避免出现某个功能模块压力较大无法针对单个模块进行优化。</p>
-<p><img src="/2019/09/04/初始SpringBoot/%E5%BE%AE%E6%9C%8D%E5%8A%A1.png" alt="微服务"></p>
-<p>注意：并不是使用了springboot就是微服务，springboot只是为了更好的帮助我们创建项目。真正的微服务需要架构上的支持。</p>
-<h2 id="二、SpringBoot"><a href="#二、SpringBoot" class="headerlink" title="二、SpringBoot"></a>二、SpringBoot</h2><p>SpringBoot是对于Spring框架进行进一步封装的快捷框架。</p>
-<h3 id="SpringBoot的优点"><a href="#SpringBoot的优点" class="headerlink" title="SpringBoot的优点"></a>SpringBoot的优点</h3><ol>
-<li><p>让编码更简单</p>
-</li>
-<li><p>让配置更简单</p>
-</li>
-<li><p>让部署更简单</p>
-</li>
-<li><p>让监控更简单</p>
-</li>
-</ol>
-<h3 id="SpringBoot的用法"><a href="#SpringBoot的用法" class="headerlink" title="SpringBoot的用法"></a>SpringBoot的用法</h3><h4 id="代码结构"><a href="#代码结构" class="headerlink" title="代码结构"></a>代码结构</h4><p>以SpringBoot框架的规则。每个项目中都需要有一个packge包，否则在使用 @EntityScan,@SpringBootApplication 等注解时可能会出现一些问题。<br><img src="/2019/09/04/初始SpringBoot/SpringBootApplication.png" alt="SpringBootApplication注解"><br>此注解可以作用：扫描同级别、同级子包的注解和配置</p>
-<h4 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h4><p>SpringBoot能简化配置的原因是因为通过@EnableAutoConfiguration注解开启了SpringBoot的自动配置功能。</p>
-<h4 id="集成开关"><a href="#集成开关" class="headerlink" title="集成开关"></a>集成开关</h4><p>SpringBoot对其他的框架、插件、类库提供了一系列以Enable开头的注解。通过这些注解可以为我们减少大量配置文件的编写。例如：<br><img src="/2019/09/04/初始SpringBoot/Enable%E6%B3%A8%E8%A7%A3.png" alt="Enable注解"></p>
-<h4 id="自定义Bean"><a href="#自定义Bean" class="headerlink" title="自定义Bean"></a>自定义Bean</h4><p>可以创建一个类，为它加上@Configuration注解即可使这个类为配置类。类似于spring.xml配置文件。需要加上Bean注解将这个方法存放到Spring的IOC容器中，便于后续直接调用容器中的方法。<br><img src="/2019/09/04/初始SpringBoot/Bean%E8%87%AA%E5%AE%9A%E4%B9%89.png" alt="Bean自定义"></p>
-<h3 id="使用IDEA创建SpringBoot项目"><a href="#使用IDEA创建SpringBoot项目" class="headerlink" title="使用IDEA创建SpringBoot项目"></a>使用IDEA创建SpringBoot项目</h3><p>1、打开IDEA，在菜单栏中选择File菜单==》New==》Project==》Spring Initializr。再选择相应的JDK（只支持1.8版本以后的JDK）。<br> <img src="/2019/09/04/初始SpringBoot/%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.png" alt="创建项目"><br> 2、设置公司域名、包名（不可大写，图片有误）等之后，选择项目需要使用到的依赖（此项目暂时只需要Web依赖）<br> <img src="/2019/09/04/初始SpringBoot/%E9%A1%B9%E7%9B%AE%E5%91%BD%E5%90%8D.png" alt="项目命名"><br> <img src="/2019/09/04/初始SpringBoot/%E9%80%89%E6%8B%A9%E4%BE%9D%E8%B5%96.png" alt="选择依赖"><br> <img src="/2019/09/04/初始SpringBoot/%E6%A0%B9%E7%9B%AE%E5%BD%95.png" alt="根目录"><br> 3、创建项目之后会自动生成许多文件，找到XXXApplication.java文件。此文件中带有一个main方法，可以用来启动项目。<br> 4、创建之后没有以上顺利找不到运行则打开IDEA配置Maven，查看Maven的本地配置。<br>  <img src="/2019/09/04/初始SpringBoot/%E6%97%A0%E5%90%AF%E5%8A%A8.png" alt="无启动"><br>  打开settings找到Maven对应图片进行修改配置，将SpringBoot所需要用到的jar文件下到本地仓库<br>  <img src="/2019/09/04/初始SpringBoot/%E4%B8%8B%E8%BD%BDJar.png" alt="下载Jar"><br>  等待一段时间出现此状态就说明下载完成<br>  <img src="/2019/09/04/初始SpringBoot/%E5%AF%BC%E5%85%A5%E6%88%90%E5%8A%9F.png" alt="导入成功"><br>  之后再去运行启动类的main方法</p>
+        <h3 id="什么是网络爬虫"><a href="#什么是网络爬虫" class="headerlink" title="什么是网络爬虫"></a>什么是网络爬虫</h3><p>网络爬虫是一个自动爬取网页数据的程序或脚本，在给定的URL地址中获取我们需要的数据，并得到新的URL地址设置为我们爬取的目标，直到满足我们设置的条件才停止。</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p> 1.根据指定得URL地址发送请求</p>
+<p> 2.获得响应</p>
+<p> 3.解析响应</p>
+<p> 4.过滤出我们想要的数据并保存</p>
+<p> <img src="/2019/09/10/Java爬虫/%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" alt="工作原理"></p>
+<h3 id="入门程序"><a href="#入门程序" class="headerlink" title="入门程序"></a>入门程序</h3><h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><p>1.JDK1.8</p>
+<p>2.Intellij IDEA</p>
+<p>3.IDEA自带的Maven</p>
+<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><h5 id="添加pom-xml"><a href="#添加pom-xml" class="headerlink" title="添加pom.xml"></a>添加pom.xml</h5><p>1.添加抓取网页内容的依赖<br><img src="Java%E7%88%AC%E8%99%AB/httpclients.png" alt="抓网页内容依赖"><br><img src="/2019/09/10/Java爬虫/%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC.png" alt="依赖版本"><br>2.日志依赖<br><img src="/2019/09/10/Java爬虫/%E6%97%A5%E5%BF%97.png" alt="日志"></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+&lt;groupId&gt;com&lt;/groupId&gt;
+&lt;artifactId&gt;kuge&lt;/artifactId&gt;
+&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+&lt;dependencies&gt;
+    &lt;!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+        &lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+        &lt;version&gt;4.5.6&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+        &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+        &lt;version&gt;1.7.25&lt;/version&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+#### 添加日志文件log4j.properties
+    log4j.rootLogger=DEBUG,Al
+    1og4j.logger.cn.itcast = DEBUG
+
+<pre><code>1og4j.appender.A1=org.apache.log4j.ConsoleAppender
+log4j.appender.A1.layout=org.apache .1og4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss,SSS}[%t] [%c ]-[%p] %m%n</code></pre><h4 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h4><p>爬取百度首页的html标签</p>
+<pre><code>package com.kuge.test;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+
+public class Test1 {
+    public static void main(String[] args) throws IOException {
+        //1.打开浏览器（创建一个HTTPClient对象）
+        CloseableHttpClient httpClient= HttpClients.createDefault();
+
+        //2.输入网址(发起get请求，创建httpGet对象)
+        HttpGet httpGet=new HttpGet(&quot;http://isyoubao.coding.me/&quot;);
+
+        //3.回车，发送请求，返回响应（使用HTTPClient对象发起请求）
+        CloseableHttpResponse response=httpClient.execute(httpGet);
+
+        //4.解析响应，获取数据
+        //判断状态码是否为200
+        if (response.getStatusLine().getStatusCode()==200){
+            //获取响应体
+            HttpEntity httpEntity=response.getEntity();
+            //获取响应数据
+            String content=EntityUtils.toString(httpEntity,&quot;utf8&quot;);
+            //输出数据
+            System.out.println(content);
+        }
+    }
+}</code></pre><p>结果<br><img src="/2019/09/10/Java爬虫/%E7%BB%93%E6%9E%9C.png" alt="结果"></p>
 
       
     </div>
@@ -390,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/17/hello-world/" rel="next" title="Hexo页面美化">
-                <i class="fa fa-chevron-left"></i> Hexo页面美化
+              <a href="/2019/09/09/pringBoot的Web开发/" rel="next" title="SpringBoot的Web开发">
+                <i class="fa fa-chevron-left"></i> SpringBoot的Web开发
               </a>
             
           </div>
@@ -399,10 +451,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/09/pringBoot的Web开发/" rel="prev" title="SpringBoot的Web开发">
-                SpringBoot的Web开发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -541,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot"><span class="nav-number">1.</span> <span class="nav-text">SpringBoot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是微服务"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是微服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、SpringBoot"><span class="nav-number">1.2.</span> <span class="nav-text">二、SpringBoot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot的优点"><span class="nav-number">1.2.1.</span> <span class="nav-text">SpringBoot的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot的用法"><span class="nav-number">1.2.2.</span> <span class="nav-text">SpringBoot的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码结构"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">代码结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动配置"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">自动配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集成开关"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">集成开关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义Bean"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">自定义Bean</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用IDEA创建SpringBoot项目"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用IDEA创建SpringBoot项目</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是网络爬虫"><span class="nav-number">1.</span> <span class="nav-text">什么是网络爬虫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理"><span class="nav-number">2.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入门程序"><span class="nav-number">3.</span> <span class="nav-text">入门程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境配置"><span class="nav-number">3.1.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境准备"><span class="nav-number">3.2.</span> <span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加pom-xml"><span class="nav-number">3.2.1.</span> <span class="nav-text">添加pom.xml</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试类"><span class="nav-number">3.3.</span> <span class="nav-text">测试类</span></a></li></ol></li></ol></div>
             
 
           </div>
