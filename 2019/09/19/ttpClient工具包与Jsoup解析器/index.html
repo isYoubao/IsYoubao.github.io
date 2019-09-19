@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、HttpClient1）什么是HttpClientHttpClient是Apache下的工具包。使用了HttpClient就可以使用Http协议来抓取网页的数据。 2）Get请求与前文java爬虫入门（一）中的入门程序大部分一致。（此文添加释放资源） package com.kuge.test;  import org.apache.http.client.methods.CloseableH">
+<meta name="keywords" content="游宝的个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HttpClient工具包与Jsoup解析器">
+<meta property="og:url" content="http://yoursite.com/2019/09/19/ttpClient工具包与Jsoup解析器/index.html">
+<meta property="og:site_name" content="游宝的个人博客">
+<meta property="og:description" content="一、HttpClient1）什么是HttpClientHttpClient是Apache下的工具包。使用了HttpClient就可以使用Http协议来抓取网页的数据。 2）Get请求与前文java爬虫入门（一）中的入门程序大部分一致。（此文添加释放资源） package com.kuge.test;  import org.apache.http.client.methods.CloseableH">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-19T14:05:24.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HttpClient工具包与Jsoup解析器">
+<meta name="twitter:description" content="一、HttpClient1）什么是HttpClientHttpClient是Apache下的工具包。使用了HttpClient就可以使用Http协议来抓取网页的数据。 2）Get请求与前文java爬虫入门（一）中的入门程序大部分一致。（此文添加释放资源） package com.kuge.test;  import org.apache.http.client.methods.CloseableH">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/09/19/ttpClient工具包与Jsoup解析器/">
+
+
+
+
+
+  <title>HttpClient工具包与Jsoup解析器 | 游宝的个人博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?82d459ef4fa3996fefff80a42db59583";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">游宝的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">砥砺前行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/ttpClient工具包与Jsoup解析器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="游宝">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="游宝的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HttpClient工具包与Jsoup解析器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T19:58:59+08:00">
+                2019-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、HttpClient"><a href="#一、HttpClient" class="headerlink" title="一、HttpClient"></a>一、HttpClient</h2><h3 id="1）什么是HttpClient"><a href="#1）什么是HttpClient" class="headerlink" title="1）什么是HttpClient"></a>1）什么是HttpClient</h3><p>HttpClient是Apache下的工具包。使用了HttpClient就可以使用Http协议来抓取网页的数据。</p>
+<h3 id="2）Get请求"><a href="#2）Get请求" class="headerlink" title="2）Get请求"></a>2）Get请求</h3><p>与前文java爬虫入门（一）中的入门程序大部分一致。（此文添加释放资源）</p>
+<pre><code>package com.kuge.test;
+
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+
+public class HttpGetTest {
+    public static void main(String[] args) {
+        //1.创建HTTPClient对象
+        CloseableHttpClient httpClient= HttpClients.createDefault();
+
+        //2.创建httpGet对象，响应地址
+        HttpGet httpGet=new HttpGet(&quot;http://isyoubao.coding.me&quot;);
+
+        //3.使用HTTPClient发起请求
+        CloseableHttpResponse response=null;
+        try {
+            //获取response
+            response=httpClient.execute(httpGet);
+
+            //4.解析响应，获得数据
+            if (response.getStatusLine().getStatusCode()==200){
+                String content= EntityUtils.toString(response.getEntity(),&quot;utf8&quot;);
+                System.out.println(content);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            //释放资源
+            try {
+                response.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            //关闭浏览器
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}</code></pre><h3 id="3）Get请求带参数"><a href="#3）Get请求带参数" class="headerlink" title="3）Get请求带参数"></a>3）Get请求带参数</h3><p>1.大部分代码一致。在创建HttpGet对象之前添加一个URIBuilder，并为其制定爬取地址。</p>
+<pre><code>//1.创建HTTPClient对象
+CloseableHttpClient httpClient= HttpClients.createDefault();
+
+//创建URIBuilder(区分url和uri)
+URIBuilder uriBuilder=new URIBuilder(&quot;http://baijiahao.baidu.com/s&quot;);</code></pre><p>2.设置参数。可以在后面继续setParameter()，可多参数</p>
+<pre><code>//设置参数
+uriBuilder.setParameter(&quot;id&quot;,&quot;1644977624357270797&quot;);</code></pre><p>3.再创建一个HttpGet，将uriBuilder做为他的参数</p>
+<pre><code>//创建httpGet对象，设置uri访问地址
+HttpGet httpGet=new HttpGet(uriBuilder.build());</code></pre><p>4.后续代码一致</p>
+<pre><code>CloseableHttpResponse response=null;
+    try {
+        //3.使用HTTPClient发起请求，获取response
+        。。。
+     }</code></pre><h3 id="4）Post请求"><a href="#4）Post请求" class="headerlink" title="4）Post请求"></a>4）Post请求</h3><p> 与Get请求一致。只需要将Get改为Post即可。其他代码实现一致。</p>
+<pre><code>//2.创建httpGet对象，响应地址
+HttpPost httpPost=new HttpPost(&quot;http://isyoubao.coding.me&quot;);</code></pre><h3 id="5）Post请求带参数"><a href="#5）Post请求带参数" class="headerlink" title="5）Post请求带参数"></a>5）Post请求带参数</h3><p> Post因为是表单提交所以稍微比Get请求带参数更为复杂一点。</p>
+<p> 1.直接创建HttpPost对象，设置响应的地址</p>
+<pre><code>HttpPost httpPost=new HttpPost(&quot;http://baijiahao.baidu.com/s&quot;);</code></pre><p> 2.声明一个List集合，封装表单中的参数</p>
+<pre><code>List&lt;NameValuePair&gt; params=new ArrayList&lt;NameValuePair&gt;();</code></pre><p>3.设置参数，可点击NameValuePair中按F4查看该接口的实现类</p>
+<pre><code>params.add(new BasicNameValuePair(&quot;id&quot;,&quot;1644977520146930702&quot;));</code></pre><p>4.创建表单的Entity对象</p>
+<pre><code>//第一个参数就是封装好的表单数据，第二个是编码
+UrlEncodedFormEntity formEntity=new UrlEncodedFormEntity(params,&quot;utf8&quot;);</code></pre><p>5.最后设置表单的Entity对象到POST请求中</p>
+<pre><code>httpPost.setEntity(formEntity);</code></pre><p>6.后续代码一致</p>
+<pre><code>//省略。。。</code></pre><h3 id="6）连接池"><a href="#6）连接池" class="headerlink" title="6）连接池"></a>6）连接池</h3><p>我们这里的HttpClient和response和数据库连接一样，每次使用都需要打开和关闭，非常麻烦。这里我们也有和数据库一样的操作“连接池”。</p>
+<pre><code>public static void main(String[] args) {
+        //1.创建连接池管理器
+        PoolingHttpClientConnectionManager cm=new PoolingHttpClientConnectionManager();
+
+        //设置最大连接数（）
+        cm.setMaxTotal(100);
+
+        //设置每个主机的最大连接数
+        cm.setDefaultMaxPerRoute(10);
+
+        //2.使用连接池管理器发起请求
+        doGet(cm);
+        doGet(cm);
+    }
+
+    private static void doGet(PoolingHttpClientConnectionManager cm) {
+        //3.不用每次都创建新的HttpClient，而是从连接池中获取HttpClient对象
+        CloseableHttpClient httpClient= HttpClients.custom().setConnectionManager(cm).build();
+
+        HttpGet httpGet=new HttpGet(&quot;http://sports.cctv.com&quot;);
+
+        CloseableHttpResponse response=null;
+        try {
+           //省略。。。
+        }finally {
+            //省略。。。
+            //4.不能手动关闭，由连接池管理
+            //if (httpClient!=null){
+            //    httpClient.close();
+            //}
+        }
+    }</code></pre><h3 id="7）请求参数"><a href="#7）请求参数" class="headerlink" title="7）请求参数"></a>7）请求参数</h3><p>我们的爬虫程序有时候可能会因为网络的原因或者爬取的地址同时被多人访问压力太大导致请求时间过长，最终导致我们的爬虫程序崩溃。为了防止这种问题我们需要自己手动设置相关时间。</p>
+<p>1.在创建HttpGet之后创建一个配置对象RequestConfig，为其设置相关时间参数</p>
+<pre><code>RequestConfig config=RequestConfig.custom().setConnectTimeout(1000)     //创建连接的最长时间
+                        .setConnectionRequestTimeout(500)       //设置获取连接的最长时间。毫秒
+                        .setSocketTimeout(10*1000)              //设置数据传输的最长时间
+                        .build();</code></pre><p>2.直接给我们的请求设置请求信息</p>
+<pre><code>httpGet.setConfig(config);</code></pre><h2 id="二、Jsoup"><a href="#二、Jsoup" class="headerlink" title="二、Jsoup"></a>二、Jsoup</h2><p>通过之前的方法抓取到的数据都是以Html的格式返回出来，因此我们需要对这些数据进行解析，而目前我们所掌握的技术只能使用字符串处理工具或者正则表达式，而这些方法使用起来比较复杂且开发成本也会很高。因此就有了Jsoup</p>
+<h3 id="1）Jsoup介绍"><a href="#1）Jsoup介绍" class="headerlink" title="1）Jsoup介绍"></a>1）Jsoup介绍</h3><p>jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据</p>
+<h3 id="2）Jsoup的主要功能"><a href="#2）Jsoup的主要功能" class="headerlink" title="2）Jsoup的主要功能"></a>2）Jsoup的主要功能</h3><p>1.从一个URL，文件或字符串中解析HTML</p>
+<p>2.使用DOM或CSS选择器来查找、取出数据</p>
+<p>3.可操作HTML元素、属性、文件</p>
+<h3 id="3）使用Jsoup"><a href="#3）使用Jsoup" class="headerlink" title="3）使用Jsoup"></a>3）使用Jsoup</h3><p>引入Jsoup、junit、commons-io、commons-lang3四个依赖</p>
+<pre><code>&lt;!-- https://mvnrepository.com/artifact/org.jsoup/jsoup --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.jsoup&lt;/groupId&gt;
+        &lt;artifactId&gt;jsoup&lt;/artifactId&gt;
+        &lt;version&gt;1.11.3&lt;/version&gt;
+    &lt;/dependency&gt;
+   &lt;!-- https://mvnrepository.com/artifact/junit/junit --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;version&gt;4.12&lt;/version&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;!-- https://mvnrepository.com/artifact/commons-io/commons-io --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;commons-io&lt;/groupId&gt;
+        &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+        &lt;version&gt;2.6&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+        &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;
+        &lt;version&gt;3.7&lt;/version&gt;
+    &lt;/dependency&gt;</code></pre><h3 id="3）解析Url"><a href="#3）解析Url" class="headerlink" title="3）解析Url"></a>3）解析Url</h3><p>例如：解析 <a href="http://isyoubao.coding.me" target="_blank" rel="noopener">http://isyoubao.coding.me</a> 这个网页，获取网页的第一个title内容</p>
+<p>1.创建一个Document对象，设置访问地址和访问时的最长时间</p>
+<pre><code>Document document = Jsoup.parse(new URL(&quot;http://isyoubao.coding.me/&quot;),1000);</code></pre><p>2.使用dom对象获取指定节点的内容，返回一个Element元素</p>
+<pre><code>Element title=document.getElementsByTag(&quot;title&quot;).first();</code></pre><p>3.打印输出。因为是元素，所以获取值需要.text()方法</p>
+<pre><code>System.out.println(title.text());</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持就是对我最大的鼓励！谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/收款码.png" alt="游宝 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/17/Java爬虫入门（二）/" rel="next" title="Java爬虫入门（二）">
+                <i class="fa fa-chevron-left"></i> Java爬虫入门（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">游宝</p>
+              <p class="site-description motion-element" itemprop="description">如果学习只在于模仿，那么我们就不会有科学，也不会有技术</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://MeBieber.coding.me/" title="Bieber的博客" target="_blank">Bieber的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://kublic.coding.me/" title="小李狗de博客" target="_blank">小李狗de博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、HttpClient"><span class="nav-number">1.</span> <span class="nav-text">一、HttpClient</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）什么是HttpClient"><span class="nav-number">1.1.</span> <span class="nav-text">1）什么是HttpClient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）Get请求"><span class="nav-number">1.2.</span> <span class="nav-text">2）Get请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）Get请求带参数"><span class="nav-number">1.3.</span> <span class="nav-text">3）Get请求带参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）Post请求"><span class="nav-number">1.4.</span> <span class="nav-text">4）Post请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）Post请求带参数"><span class="nav-number">1.5.</span> <span class="nav-text">5）Post请求带参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6）连接池"><span class="nav-number">1.6.</span> <span class="nav-text">6）连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7）请求参数"><span class="nav-number">1.7.</span> <span class="nav-text">7）请求参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Jsoup"><span class="nav-number">2.</span> <span class="nav-text">二、Jsoup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）Jsoup介绍"><span class="nav-number">2.1.</span> <span class="nav-text">1）Jsoup介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）Jsoup的主要功能"><span class="nav-number">2.2.</span> <span class="nav-text">2）Jsoup的主要功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）使用Jsoup"><span class="nav-number">2.3.</span> <span class="nav-text">3）使用Jsoup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）解析Url"><span class="nav-number">2.4.</span> <span class="nav-text">3）解析Url</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">游宝</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/click.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
