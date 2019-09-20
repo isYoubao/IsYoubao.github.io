@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="游宝的个人博客">
 <meta property="og:description" content="一、HttpClient1）什么是HttpClientHttpClient是Apache下的工具包。使用了HttpClient就可以使用Http协议来抓取网页的数据。 2）Get请求与前文java爬虫入门（一）中的入门程序大部分一致。（此文添加释放资源） package com.kuge.test;  import org.apache.http.client.methods.CloseableH">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-19T14:05:24.982Z">
+<meta property="og:updated_time" content="2019-09-20T03:18:58.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HttpClient工具包与Jsoup解析器">
 <meta name="twitter:description" content="一、HttpClient1）什么是HttpClientHttpClient是Apache下的工具包。使用了HttpClient就可以使用Http协议来抓取网页的数据。 2）Get请求与前文java爬虫入门（一）中的入门程序大部分一致。（此文添加释放资源） package com.kuge.test;  import org.apache.http.client.methods.CloseableH">
@@ -455,7 +455,20 @@ UrlEncodedFormEntity formEntity=new UrlEncodedFormEntity(params,&quot;utf8&quot;
 <p>1.创建一个Document对象，设置访问地址和访问时的最长时间</p>
 <pre><code>Document document = Jsoup.parse(new URL(&quot;http://isyoubao.coding.me/&quot;),1000);</code></pre><p>2.使用dom对象获取指定节点的内容，返回一个Element元素</p>
 <pre><code>Element title=document.getElementsByTag(&quot;title&quot;).first();</code></pre><p>3.打印输出。因为是元素，所以获取值需要.text()方法</p>
-<pre><code>System.out.println(title.text());</code></pre>
+<pre><code>System.out.println(title.text());</code></pre><h3 id="4）解析Html"><a href="#4）解析Html" class="headerlink" title="4）解析Html"></a>4）解析Html</h3><p>需要使用一个工具类FileUtils.readFileToString，把HTML文件地址放进去</p>
+<pre><code>String content= FileUtils.readFileToString(new File(&quot;C:\\Users\\游宝\\Desktop\\one.html&quot;),&quot;utf8&quot;);</code></pre><p>后面跟解析Url一样，直接解析字符串然后获得某个节点的内容进行输出</p>
+<pre><code>//解析字符串
+Document document=Jsoup.parse(content);
+
+String title=document.getElementsByTag(&quot;title&quot;).first().text();
+
+System.out.println(title);</code></pre><h3 id="5-解析文件"><a href="#5-解析文件" class="headerlink" title="5)解析文件"></a>5)解析文件</h3><p>解析文件也与之前相似，用Jsoup.parse设置文件地址然后获得节点内容输出即可</p>
+<pre><code>//解析文件
+Document document=Jsoup.parse(new File(&quot;C:\\Users\\游宝\\Desktop\\one.html&quot;),&quot;utf8&quot;);
+
+String title=document.getElementsByTag(&quot;title&quot;).first().text();
+
+System.out.println(title);</code></pre>
       
     </div>
     
@@ -650,7 +663,7 @@ UrlEncodedFormEntity formEntity=new UrlEncodedFormEntity(params,&quot;utf8&quot;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、HttpClient"><span class="nav-number">1.</span> <span class="nav-text">一、HttpClient</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）什么是HttpClient"><span class="nav-number">1.1.</span> <span class="nav-text">1）什么是HttpClient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）Get请求"><span class="nav-number">1.2.</span> <span class="nav-text">2）Get请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）Get请求带参数"><span class="nav-number">1.3.</span> <span class="nav-text">3）Get请求带参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）Post请求"><span class="nav-number">1.4.</span> <span class="nav-text">4）Post请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）Post请求带参数"><span class="nav-number">1.5.</span> <span class="nav-text">5）Post请求带参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6）连接池"><span class="nav-number">1.6.</span> <span class="nav-text">6）连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7）请求参数"><span class="nav-number">1.7.</span> <span class="nav-text">7）请求参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Jsoup"><span class="nav-number">2.</span> <span class="nav-text">二、Jsoup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）Jsoup介绍"><span class="nav-number">2.1.</span> <span class="nav-text">1）Jsoup介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）Jsoup的主要功能"><span class="nav-number">2.2.</span> <span class="nav-text">2）Jsoup的主要功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）使用Jsoup"><span class="nav-number">2.3.</span> <span class="nav-text">3）使用Jsoup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）解析Url"><span class="nav-number">2.4.</span> <span class="nav-text">3）解析Url</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、HttpClient"><span class="nav-number">1.</span> <span class="nav-text">一、HttpClient</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）什么是HttpClient"><span class="nav-number">1.1.</span> <span class="nav-text">1）什么是HttpClient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）Get请求"><span class="nav-number">1.2.</span> <span class="nav-text">2）Get请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）Get请求带参数"><span class="nav-number">1.3.</span> <span class="nav-text">3）Get请求带参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）Post请求"><span class="nav-number">1.4.</span> <span class="nav-text">4）Post请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5）Post请求带参数"><span class="nav-number">1.5.</span> <span class="nav-text">5）Post请求带参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6）连接池"><span class="nav-number">1.6.</span> <span class="nav-text">6）连接池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7）请求参数"><span class="nav-number">1.7.</span> <span class="nav-text">7）请求参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Jsoup"><span class="nav-number">2.</span> <span class="nav-text">二、Jsoup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）Jsoup介绍"><span class="nav-number">2.1.</span> <span class="nav-text">1）Jsoup介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）Jsoup的主要功能"><span class="nav-number">2.2.</span> <span class="nav-text">2）Jsoup的主要功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）使用Jsoup"><span class="nav-number">2.3.</span> <span class="nav-text">3）使用Jsoup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3）解析Url"><span class="nav-number">2.4.</span> <span class="nav-text">3）解析Url</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4）解析Html"><span class="nav-number">2.5.</span> <span class="nav-text">4）解析Html</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-解析文件"><span class="nav-number">2.6.</span> <span class="nav-text">5)解析文件</span></a></li></ol></li></ol></div>
             
 
           </div>
