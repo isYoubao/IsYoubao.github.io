@@ -89,8 +89,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/12/26/HEXO常用指令/%E5%90%AF%E5%8A%A8.png">
 <meta property="og:image" content="http://yoursite.com/2019/12/26/HEXO常用指令/%E8%BF%9B%E5%85%A5%E5%90%8E%E5%8F%B0.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/26/HEXO常用指令/%E5%8F%91%E5%B8%83.png">
-<meta property="og:updated_time" content="2019-12-26T08:53:00.320Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/HEXO常用指令/%E4%BF%9D%E5%AD%98.png">
+<meta property="og:updated_time" content="2019-12-26T09:01:18.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HEXO常用指令">
 <meta name="twitter:description" content="在正文的开始先自我“我透”一次。怎么说呢？像我之前学了一个solr搜索引擎对吧，过了1-2个月没用，后面做项目又需要使用。然后重新部署和设置solr的时候发现一堆的错误，没见过（又或是之前见过现在已经忘了）。然后现在用hexo写篇博客来总结一哈，让以后用可以看这个博客。当我花了整整4天解决solr一系列bug之后（也就是写博客的时候）发现，hexo？什么是hexo？怎么用？咋启动？怎么进入后台？我">
@@ -325,9 +325,13 @@
 <h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><pre><code>## 标题
 ### 小标题
 #### XXX</code></pre><h3 id="代码行"><a href="#代码行" class="headerlink" title="代码行"></a>代码行</h3><pre><code>回车两行+tab一次。字体变色即可</code></pre><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>符号都是英文状态，文件夹自己在hexo/source/_posts下新建。名称需要和博客标题对应</p>
-<pre><code>![若图片不存在的替代文字](文件夹命/图片名)</code></pre><h2 id="三、发布及部署"><a href="#三、发布及部署" class="headerlink" title="三、发布及部署"></a>三、发布及部署</h2><h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>导航栏点击Deploy进行发布<br><img src="/2019/12/26/HEXO常用指令/%E5%8F%91%E5%B8%83.png" alt="发布"></p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>发布完之后在git上输入hexo g -d进行部署</p>
-<pre><code>hexo g -d</code></pre>
+<pre><code>![若图片不存在的替代文字](文件夹命/图片名)</code></pre><h2 id="三、发布及部署"><a href="#三、发布及部署" class="headerlink" title="三、发布及部署"></a>三、发布及部署</h2><h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><p>导航栏点击Deploy进行保存<br><img src="/2019/12/26/HEXO常用指令/%E4%BF%9D%E5%AD%98.png" alt="保存"></p>
+<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>保存之后在git上输入hexo g -d进行发布</p>
+<pre><code>hexo g -d</code></pre><h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>发布之后并不会在你的个人博客进行显示，需要将你原有的hexo进行清除</p>
+<pre><code>hexo clean</code></pre><p>清除完之后生成新的静态文件</p>
+<pre><code>hexo g</code></pre><p>然后再把新的静态文件部署到博客上即可</p>
+<pre><code>hexo d</code></pre><p>若发现需要改进记得再次输入</p>
+<pre><code>hexo s</code></pre>
       
     </div>
     
@@ -522,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、启动"><span class="nav-number">1.</span> <span class="nav-text">一、启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、编写"><span class="nav-number">2.</span> <span class="nav-text">二、编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题"><span class="nav-number">2.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码行"><span class="nav-number">2.2.</span> <span class="nav-text">代码行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片"><span class="nav-number">2.3.</span> <span class="nav-text">图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、发布及部署"><span class="nav-number">3.</span> <span class="nav-text">三、发布及部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发布"><span class="nav-number">3.1.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">3.2.</span> <span class="nav-text">部署</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、启动"><span class="nav-number">1.</span> <span class="nav-text">一、启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、编写"><span class="nav-number">2.</span> <span class="nav-text">二、编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题"><span class="nav-number">2.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码行"><span class="nav-number">2.2.</span> <span class="nav-text">代码行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片"><span class="nav-number">2.3.</span> <span class="nav-text">图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、发布及部署"><span class="nav-number">3.</span> <span class="nav-text">三、发布及部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存"><span class="nav-number">3.1.</span> <span class="nav-text">保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布"><span class="nav-number">3.2.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">3.3.</span> <span class="nav-text">部署</span></a></li></ol></li></ol></div>
             
 
           </div>
