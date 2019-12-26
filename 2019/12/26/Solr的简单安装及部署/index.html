@@ -79,18 +79,29 @@
 
 
 
-<meta name="description" content="一、网络爬虫1）网络爬虫介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在现在这个大数据的时代，采集信息是一项尤为重要的任务，而互联网中的数据是动态的、海量的，如果只靠人力来进行采集，不仅效率低且繁琐，成本也高。那么如何高效率的获取互联网中我们感兴趣的数据为我们使用呢？简单，爬虫技术就是为此而生的。  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs">
+<meta name="description" content="下载Solr下载地址：http://archive.apache.org/dist/lucene/solr/ 选择4.9.1版本  安装由于solr本身就是一个war的包，因此安装就是等于将它放置Tomcat容器中进行部署。解压下载的zip包，将dist/solr-4.9.1.war文件复制到tomcat的webapps目录下，并命名为solr.war  将zip包解压后的example\lib\">
 <meta name="keywords" content="游宝的个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java爬虫入门（二）">
-<meta property="og:url" content="http://yoursite.com/2019/09/17/Java爬虫入门（二）/index.html">
+<meta property="og:title" content="Solr的简单安装及部署">
+<meta property="og:url" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/index.html">
 <meta property="og:site_name" content="游宝的个人博客">
-<meta property="og:description" content="一、网络爬虫1）网络爬虫介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在现在这个大数据的时代，采集信息是一项尤为重要的任务，而互联网中的数据是动态的、海量的，如果只靠人力来进行采集，不仅效率低且繁琐，成本也高。那么如何高效率的获取互联网中我们感兴趣的数据为我们使用呢？简单，爬虫技术就是为此而生的。  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs">
+<meta property="og:description" content="下载Solr下载地址：http://archive.apache.org/dist/lucene/solr/ 选择4.9.1版本  安装由于solr本身就是一个war的包，因此安装就是等于将它放置Tomcat容器中进行部署。解压下载的zip包，将dist/solr-4.9.1.war文件复制到tomcat的webapps目录下，并命名为solr.war  将zip包解压后的example\lib\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-17T12:32:03.937Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/war%E5%8C%85.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/war1.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/ext%E4%B8%8B%E7%9A%84jar.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/solr%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/%E8%A7%A3%E5%8E%8B.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/%E5%8E%9Fsolr_home.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/%E6%94%B9solr_home.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/solr%E4%B8%BB%E9%A1%B5.png">
+<meta property="og:updated_time" content="2019-12-26T12:38:48.965Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java爬虫入门（二）">
-<meta name="twitter:description" content="一、网络爬虫1）网络爬虫介绍&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在现在这个大数据的时代，采集信息是一项尤为重要的任务，而互联网中的数据是动态的、海量的，如果只靠人力来进行采集，不仅效率低且繁琐，成本也高。那么如何高效率的获取互联网中我们感兴趣的数据为我们使用呢？简单，爬虫技术就是为此而生的。  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbs">
+<meta name="twitter:title" content="Solr的简单安装及部署">
+<meta name="twitter:description" content="下载Solr下载地址：http://archive.apache.org/dist/lucene/solr/ 选择4.9.1版本  安装由于solr本身就是一个war的包，因此安装就是等于将它放置Tomcat容器中进行部署。解压下载的zip包，将dist/solr-4.9.1.war文件复制到tomcat的webapps目录下，并命名为solr.war  将zip包解压后的example\lib\">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/%E4%B8%8B%E8%BD%BD.png">
 
 
 
@@ -120,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/17/Java爬虫入门（二）/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/26/Solr的简单安装及部署/">
 
 
 
 
 
-  <title>Java爬虫入门（二） | 游宝的个人博客</title>
+  <title>Solr的简单安装及部署 | 游宝的个人博客</title>
   
 
 
@@ -244,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/Java爬虫入门（二）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/Solr的简单安装及部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="游宝">
@@ -261,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java爬虫入门（二）</h1>
+          <h1 class="post-title" itemprop="name headline">Solr的简单安装及部署</h1>
         
 
         <div class="post-meta">
@@ -273,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T19:22:41+08:00">
-                2019-09-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-26T19:50:36+08:00">
+                2019-12-26
               </time>
             
 
@@ -311,17 +322,21 @@
       
 
       
-        <h2 id="一、网络爬虫"><a href="#一、网络爬虫" class="headerlink" title="一、网络爬虫"></a>一、网络爬虫</h2><h3 id="1）网络爬虫介绍"><a href="#1）网络爬虫介绍" class="headerlink" title="1）网络爬虫介绍"></a>1）网络爬虫介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在现在这个大数据的时代，采集信息是一项尤为重要的任务，而互联网中的数据是动态的、海量的，如果只靠人力来进行采集，不仅效率低且繁琐，成本也高。那么如何高效率的获取互联网中我们感兴趣的数据为我们使用呢？简单，爬虫技术就是为此而生的。</p>
-<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网络爬虫（Web crawler）也叫网络机器人，可以代替人们在互联网中进行数据的采集与整理。它是按照一定的规则，自动抓取万维网信息的程序或者脚本，可以自动采集所有能够访问的页面内容。</p>
-<h3 id="2）主要功能"><a href="#2）主要功能" class="headerlink" title="2）主要功能"></a>2）主要功能</h3><p>爬虫从一个或多个初始网页的URL开始获取数据，获得初始网页上的URL，在抓取的过程中，不断将当前页面的新URL放入到队列中，直到满足系统的一定条件才停止</p>
-<p>1.数据采集</p>
-<p>2.整理数据</p>
-<p>3.存储数据</p>
-<h2 id="二、为什么要学习网络爬虫"><a href="#二、为什么要学习网络爬虫" class="headerlink" title="二、为什么要学习网络爬虫"></a>二、为什么要学习网络爬虫</h2><h4 id="1）可以实现搜索引擎"><a href="#1）可以实现搜索引擎" class="headerlink" title="1）可以实现搜索引擎"></a>1）可以实现搜索引擎</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在我们学会爬虫编写之后，就可以利用爬虫自动采集互联网中的信息，采集回来后进行相应的处理和存储，在需要检索某些数据的时候，只需要在采集回来的信息中进行检索，即实现了死人的搜索引擎。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;搜索引擎：搜索引擎是根据一定的策略、运用特定的计算机程序从互联网中搜集信息，在对信息进行组织和处理后，为用户提供检索服务，将用户检索相关的信息展示给用户的系统。搜索引擎包括全文索引、目录索引、元搜索引擎、垂直搜索引擎、集合式搜索引擎、门户搜索引擎与免费链接列表等。</p>
-<h4 id="2）大数据时代，获取更多的数据源"><a href="#2）大数据时代，获取更多的数据源" class="headerlink" title="2）大数据时代，获取更多的数据源"></a>2）大数据时代，获取更多的数据源</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在进行大数据分析和挖崛数据的时候，我们可以通过一些统计数据的网站获得，也可以通过一些内部资料来获取，但这些数据可能不是我们想要的，或者很多废话。那么我们就可以通过爬虫设定规则获取我们想要的数据，且可以再进行更深层的分析，获得更有价值的数据</p>
-<h4 id="3）对搜索引擎进行优化（SEO）"><a href="#3）对搜索引擎进行优化（SEO）" class="headerlink" title="3）对搜索引擎进行优化（SEO）"></a>3）对搜索引擎进行优化（SEO）</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;搜索引擎优化就是将个人或者公司的某个网站或网址在百度等搜索引擎中的排名更为靠前</p>
-<h4 id="4）有利于就业"><a href="#4）有利于就业" class="headerlink" title="4）有利于就业"></a>4）有利于就业</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随着大数据时代和人工智能技术的来临，爬虫技术应用范围越来越广，在未来会有更好的发展空间。且技多不压身。</p>
+        <h2 id="下载Solr"><a href="#下载Solr" class="headerlink" title="下载Solr"></a>下载Solr</h2><p>下载地址：<a href="http://archive.apache.org/dist/lucene/solr/" target="_blank" rel="noopener">http://archive.apache.org/dist/lucene/solr/</a></p>
+<p>选择4.9.1版本</p>
+<p><img src="/2019/12/26/Solr的简单安装及部署/%E4%B8%8B%E8%BD%BD.png" alt="下载"><br><img src="/2019/12/26/Solr的简单安装及部署/%E7%89%88%E6%9C%AC.png" alt="版本"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>由于solr本身就是一个war的包，因此安装就是等于将它放置Tomcat容器中进行部署。解压下载的zip包，将dist/solr-4.9.1.war文件复制到tomcat的webapps目录下，并命名为solr.war</p>
+<p><img src="/2019/12/26/Solr的简单安装及部署/war%E5%8C%85.png" alt="war包"><br><img src="/2019/12/26/Solr的简单安装及部署/war1.png" alt="war1"></p>
+<p>将zip包解压后的example\lib\ext下的所有jar包复制到tomcat的lib目录下<br><img src="/2019/12/26/Solr的简单安装及部署/ext%E4%B8%8B%E7%9A%84jar.png" alt="ext下的jar"></p>
+<p>在计算机本地新建一个文件夹D:tiger\solr_home(名字可自定义，下文简称solr_home),再把zip解压后的solr-4.9.1\example\solr下的所有文件复制到solr_home</p>
+<p><img src="/2019/12/26/Solr的简单安装及部署/solr%E4%B8%8B%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6.png" alt="solr下的所有文件"></p>
+<p>启动tomcat，等待tomcat启动完成之后，打开tomcat的webapps会发现原有的solr.war已被解压成solr文件夹，然后我们需要把原来的solr.war文件删除，保留solr文件夹。</p>
+<p><img src="/2019/12/26/Solr的简单安装及部署/%E8%A7%A3%E5%8E%8B.png" alt="解压"></p>
+<p>修改配置文件。Tomcat下webapps\solr\WEB-INF\web.xml。让Tomcat中的Solr引用solr/home变量对应我们自己设定的路径solr_home</p>
+<p><img src="/2019/12/26/Solr的简单安装及部署/%E5%8E%9Fsolr_home.png" alt="原solr_home"></p>
+<p><img src="/2019/12/26/Solr的简单安装及部署/%E6%94%B9solr_home.png" alt="改solr_home"></p>
+<p>启动Tomcat，用浏览器访问<a href="http://localhost:端口号/solr/,出现以下页面则表示部署成功（端口号为tomcat的端口号）。" target="_blank" rel="noopener">http://localhost:端口号/solr/,出现以下页面则表示部署成功（端口号为tomcat的端口号）。</a></p>
+<p><img src="/2019/12/26/Solr的简单安装及部署/solr%E4%B8%BB%E9%A1%B5.png" alt="solr主页"></p>
 
       
     </div>
@@ -370,8 +385,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/10/Java爬虫/" rel="next" title="Java爬虫入门（一）">
-                <i class="fa fa-chevron-left"></i> Java爬虫入门（一）
+              <a href="/2019/12/26/HEXO常用指令/" rel="next" title="HEXO常用指令">
+                <i class="fa fa-chevron-left"></i> HEXO常用指令
               </a>
             
           </div>
@@ -379,10 +394,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/19/ttpClient工具包与Jsoup解析器/" rel="prev" title="HttpClient工具包与Jsoup解析器">
-                HttpClient工具包与Jsoup解析器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -521,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、网络爬虫"><span class="nav-number">1.</span> <span class="nav-text">一、网络爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）网络爬虫介绍"><span class="nav-number">1.1.</span> <span class="nav-text">1）网络爬虫介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）主要功能"><span class="nav-number">1.2.</span> <span class="nav-text">2）主要功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、为什么要学习网络爬虫"><span class="nav-number">2.</span> <span class="nav-text">二、为什么要学习网络爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1）可以实现搜索引擎"><span class="nav-number">2.0.1.</span> <span class="nav-text">1）可以实现搜索引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2）大数据时代，获取更多的数据源"><span class="nav-number">2.0.2.</span> <span class="nav-text">2）大数据时代，获取更多的数据源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3）对搜索引擎进行优化（SEO）"><span class="nav-number">2.0.3.</span> <span class="nav-text">3）对搜索引擎进行优化（SEO）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4）有利于就业"><span class="nav-number">2.0.4.</span> <span class="nav-text">4）有利于就业</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Solr"><span class="nav-number">1.</span> <span class="nav-text">下载Solr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li></ol></div>
             
 
           </div>
