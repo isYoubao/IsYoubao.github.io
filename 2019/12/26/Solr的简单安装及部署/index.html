@@ -106,7 +106,12 @@
 <meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/select.png">
 <meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/data-config.png">
 <meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/schema.png">
-<meta property="og:updated_time" content="2019-12-27T15:04:41.008Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/%E5%AF%BC%E5%85%A5%E7%BB%93%E6%9E%9C.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/query.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/failure.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/text.png">
+<meta property="og:updated_time" content="2019-12-27T17:09:53.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solr的简单安装及部署">
 <meta name="twitter:description" content="下载Solr下载地址：http://archive.apache.org/dist/lucene/solr/ 选择4.9.1版本  安装由于solr本身就是一个war的包，因此安装就是等于将它放置Tomcat容器中进行部署。解压下载的zip包，将dist/solr-4.9.1.war文件复制到tomcat的webapps目录下，并命名为solr.war  将zip包解压后的example\lib\">
@@ -350,11 +355,11 @@
 <p><img src="/2019/12/26/Solr的简单安装及部署/%E5%A4%8D%E5%88%B6.png" alt="复制"><br>打开test文件夹，修改core.properties文件，将那么修改为test</p>
 <p><img src="/2019/12/26/Solr的简单安装及部署/core%E6%96%87%E4%BB%B6.png" alt="core文件"><br><img src="/2019/12/26/Solr的简单安装及部署/name.png" alt="name"><br>重新启动tomcat并访问solr，若出现我们新增的test模块，则说明新建core成功<br><img src="/2019/12/26/Solr的简单安装及部署/test.png" alt="test"></p>
 <h2 id="配置导入数据"><a href="#配置导入数据" class="headerlink" title="配置导入数据"></a>配置导入数据</h2><p>到现在为止，我们已经将solr的基本配置完成了，并且创建了一个名为test的Core，接下来我们需要做的就是把MySQL数据库和我们的搜索引擎关联起来，让Solr搜索引擎能够访问我们数据库中的数据，并建立自己的索引</p>
-<h3 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h3><p>1.下载数据库连接的jar包到Tomcat的lib目录。这里使用的mysql-connector-java-5.1.18.jar(jar包版本需要和项目中使用MySQL的jar包版本一致)</p>
+<h3 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h3><p>1.下载数据库连接的jar包到Tomcat的lib目录。这里使用的mysql-connector-java-8.0.18.jar(jar包版本需要和项目中使用MySQL的jar包版本一致)</p>
 <pre><code>下载地址：https://mvnrepository.com/artifact/mysql/mysql-connector-java</code></pre><p><img src="/2019/12/26/Solr的简单安装及部署/mysql-jar.png" alt="mysql的jar包"></p>
 <p>2.在solr解压的dist目录复制如下两个jar到Tomcat的webapps/solr/lib目录中（该jar是用来向solr引擎中导入数据）。</p>
 <p><img src="/2019/12/26/Solr的简单安装及部署/dataimport.png" alt="导入数据的jar"></p>
-<h3 id="数据导入处理器"><a href="#数据导入处理器" class="headerlink" title="数据导入处理器"></a>数据导入处理器</h3><p>打开solr_home下的test\conf\solrconfig.xml文件。在 &lt; requestHandler name=”/select” class=”solr.SearchHandler”&gt;节点的前面加上数据导入的处理器节点。内容如下<br><img src="/2019/12/26/Solr的简单安装及部署/select.png" alt="导入数据的节点"></p>
+<h3 id="数据导入处理器"><a href="#数据导入处理器" class="headerlink" title="数据导入处理器"></a>数据导入处理器</h3><p>打开solr_home下的test\conf\solrconfig.xml文件。在 &lt; requestHandler name=”/select”class=”solr.SearchHandler”&gt;节点的前面加上数据导入的处理器节点。内容如下<br><img src="/2019/12/26/Solr的简单安装及部署/select.png" alt="导入数据的节点"></p>
 <pre><code>&lt;requestHandler name=&quot;/dataimport&quot;
     class=&quot;org.apache.solr.handler.dataimport.DataImportHandler&quot;&gt;
     &lt;lst name=&quot;defaults&quot;&gt;
@@ -363,7 +368,8 @@
 &lt;/requestHandler&gt;</code></pre><h3 id="数据导入配置"><a href="#数据导入配置" class="headerlink" title="数据导入配置"></a>数据导入配置</h3><p>在test\conf目录下新建data-config.xml文件，内容如下<br><img src="/2019/12/26/Solr的简单安装及部署/data-config.png" alt="data-config"></p>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;dataConfig&gt;
-&lt;dataSource type=&quot;JdbcDataSource&quot; driver=&quot;com.mysql.cj.jdbc.Driver&quot;        url=&quot;jdbc:mysql://49.233.190.148:3306/test&quot; user=&quot;root&quot; password=&quot;root&quot; /&gt;
+&lt;dataSource type=&quot;JdbcDataSource&quot; driver=&quot;com.mysql.cj.jdbc.Driver&quot;        
+url=&quot;jdbc:mysql://49.233.190.148:3306/test&quot; user=&quot;root&quot; password=&quot;root&quot; /&gt;
 &lt;document name=&quot;test&quot;&gt;
     &lt;entity name=&quot;user&quot; pk=&quot;id&quot; query=&quot;select id,name,password from user&quot;&gt;
         &lt;field column=&quot;id&quot; name=&quot;t_id&quot;/&gt;
@@ -372,6 +378,23 @@
     &lt;/entity&gt;
 &lt;/document&gt;
 &lt;/dataConfig&gt;</code></pre><h3 id="索引和字段展示配置"><a href="#索引和字段展示配置" class="headerlink" title="索引和字段展示配置"></a>索引和字段展示配置</h3><p>打开test\conf\schema.xml文件。该文件是solr对数据库里面的数据进行索引管理和数据字段展示管理的配置文件<br><img src="/2019/12/26/Solr的简单安装及部署/schema.png" alt="schema文件"><br>需要把与data-config中没有相关的字段全部删除，删除至&lt; fieldType&gt;节点</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;schema name=&quot;example&quot; version=&quot;1.5&quot;&gt;
+   &lt;field name=&quot;_version_&quot; type=&quot;long&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;
+   &lt;field name=&quot;_root_&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;false&quot;/&gt;
+   &lt;field name=&quot;text&quot; type=&quot;text_general&quot; indexed=&quot;true&quot; stored=&quot;false&quot; multiValued=&quot;true&quot;/&gt;
+
+&lt;!-- 参数值和数据库表中的字段属性对应 --&gt;
+
+   &lt;field name=&quot;id&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;true&quot; multiValued=&quot;false&quot; /&gt;         
+   &lt;field name=&quot;name&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot;/&gt;
+   &lt;field name=&quot;password&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; omitNorms=&quot;true&quot;/&gt;
+ &lt;uniqueKey&gt;id&lt;/uniqueKey&gt;
+&lt;fieldType name=&quot;string&quot; class=&quot;solr.StrField&quot; sortMissingLast=&quot;true&quot; /&gt;
+&lt;!-- boolean type: &quot;true&quot; or &quot;false&quot; --&gt;
+   &lt;fieldType name=&quot;boolean&quot; class=&quot;solr.BoolField&quot; sortMissingLast=&quot;true&quot;/&gt;</code></pre><h3 id="执行导入"><a href="#执行导入" class="headerlink" title="执行导入"></a>执行导入</h3><p>以上配置完成之后，重启Tomcat，并访问solr<br><img src="/2019/12/26/Solr的简单安装及部署/%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE.png" alt="导入数据"><br><img src="/2019/12/26/Solr的简单安装及部署/%E5%AF%BC%E5%85%A5%E7%BB%93%E6%9E%9C.png" alt="导入结果"><br><img src="/2019/12/26/Solr的简单安装及部署/query.png" alt="查询结果"></p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="异常1"><a href="#异常1" class="headerlink" title="异常1"></a>异常1</h3><p>导入数据的jar包没有导入。<br><img src="/2019/12/26/Solr的简单安装及部署/failure.png" alt="异常1"><br>解决办法：回到《配置导入数据》</p>
+<h3 id="异常2"><a href="#异常2" class="headerlink" title="异常2"></a>异常2</h3><p>data-config.xml文件中的字段与schema.xml的字段没有对应(bug解决完之后他不出来了，图片敷衍了)<br><img src="/2019/12/26/Solr的简单安装及部署/text.png" alt="异常2"><br>解决办法：删除多余的字段，或添加新的节点与其对应</p>
 
       
     </div>
@@ -567,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Solr"><span class="nav-number">1.</span> <span class="nav-text">下载Solr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为项目建立搜索模块"><span class="nav-number">3.</span> <span class="nav-text">为项目建立搜索模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置导入数据"><span class="nav-number">4.</span> <span class="nav-text">配置导入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入jar包"><span class="nav-number">4.1.</span> <span class="nav-text">导入jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据导入处理器"><span class="nav-number">4.2.</span> <span class="nav-text">数据导入处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据导入配置"><span class="nav-number">4.3.</span> <span class="nav-text">数据导入配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引和字段展示配置"><span class="nav-number">4.4.</span> <span class="nav-text">索引和字段展示配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Solr"><span class="nav-number">1.</span> <span class="nav-text">下载Solr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为项目建立搜索模块"><span class="nav-number">3.</span> <span class="nav-text">为项目建立搜索模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置导入数据"><span class="nav-number">4.</span> <span class="nav-text">配置导入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入jar包"><span class="nav-number">4.1.</span> <span class="nav-text">导入jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据导入处理器"><span class="nav-number">4.2.</span> <span class="nav-text">数据导入处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据导入配置"><span class="nav-number">4.3.</span> <span class="nav-text">数据导入配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引和字段展示配置"><span class="nav-number">4.4.</span> <span class="nav-text">索引和字段展示配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行导入"><span class="nav-number">4.5.</span> <span class="nav-text">执行导入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常"><span class="nav-number">5.</span> <span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异常1"><span class="nav-number">5.1.</span> <span class="nav-text">异常1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常2"><span class="nav-number">5.2.</span> <span class="nav-text">异常2</span></a></li></ol></li></ol></div>
             
 
           </div>
