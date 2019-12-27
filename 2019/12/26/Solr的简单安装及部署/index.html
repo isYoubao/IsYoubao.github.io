@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/select.png">
 <meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/data-config.png">
 <meta property="og:image" content="http://yoursite.com/2019/12/26/Solr的简单安装及部署/schema.png">
-<meta property="og:updated_time" content="2019-12-27T14:54:04.287Z">
+<meta property="og:updated_time" content="2019-12-27T15:04:41.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solr的简单安装及部署">
 <meta name="twitter:description" content="下载Solr下载地址：http://archive.apache.org/dist/lucene/solr/ 选择4.9.1版本  安装由于solr本身就是一个war的包，因此安装就是等于将它放置Tomcat容器中进行部署。解压下载的zip包，将dist/solr-4.9.1.war文件复制到tomcat的webapps目录下，并命名为solr.war  将zip包解压后的example\lib\">
@@ -354,8 +354,7 @@
 <pre><code>下载地址：https://mvnrepository.com/artifact/mysql/mysql-connector-java</code></pre><p><img src="/2019/12/26/Solr的简单安装及部署/mysql-jar.png" alt="mysql的jar包"></p>
 <p>2.在solr解压的dist目录复制如下两个jar到Tomcat的webapps/solr/lib目录中（该jar是用来向solr引擎中导入数据）。</p>
 <p><img src="/2019/12/26/Solr的简单安装及部署/dataimport.png" alt="导入数据的jar"></p>
-<h3 id="数据导入处理器"><a href="#数据导入处理器" class="headerlink" title="数据导入处理器"></a>数据导入处理器</h3><p>打开solr_home下的test\conf\solrconfig.xml文件。在&lt; requestHandler name=”/select” class=”solr.SearchHandler”&gt;节点的前面加上数据导入的处理器节点。内容如下</p>
-<p><img src="/2019/12/26/Solr的简单安装及部署/select.png" alt="导入数据的节点"></p>
+<h3 id="数据导入处理器"><a href="#数据导入处理器" class="headerlink" title="数据导入处理器"></a>数据导入处理器</h3><p>打开solr_home下的test\conf\solrconfig.xml文件。在 &lt; requestHandler name=”/select” class=”solr.SearchHandler”&gt;节点的前面加上数据导入的处理器节点。内容如下<br><img src="/2019/12/26/Solr的简单安装及部署/select.png" alt="导入数据的节点"></p>
 <pre><code>&lt;requestHandler name=&quot;/dataimport&quot;
     class=&quot;org.apache.solr.handler.dataimport.DataImportHandler&quot;&gt;
     &lt;lst name=&quot;defaults&quot;&gt;
